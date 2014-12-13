@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             SqlConnection con = new SqlConnection(source);
             con.Open();//打开数据库
             if (con.State == ConnectionState.Open)
-                MessageBox.Show("数据库连接成功！");
+                MessageBox.Show("数据库连接成功！")  ;
             string select = "select * from 管理员";
             SqlDataAdapter sda = new SqlDataAdapter(select, con);
             DataSet ds = new DataSet();
