@@ -60,6 +60,15 @@ INT WINAPI wWinMain(HINSTANCE hInst,HINSTANCE hPrevInst,LPWSTR lpCmdLine,INT nsh
 	{
 		switch (message)
 		{
+		case WM_CREATE:
+			{
+				HWND hedit=CreateWindowEx(WS_EX_CLIENTEDGE,
+					"EDIT",//控件类型
+					"",//初始文本
+					WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_AUTOHSCROLL|ES_AUTOVSCROLL,
+					);
+			}
+			break;
 		case WM_DESTROY:
 			{
 				PostQuitMessage(0);
@@ -68,5 +77,5 @@ INT WINAPI wWinMain(HINSTANCE hInst,HINSTANCE hPrevInst,LPWSTR lpCmdLine,INT nsh
 		default:
 			break;
 		}
-		return DefWindowProc(hwnd,message,wp,lp);
+		return DefWindowProc(hwnd,message,wp,lp);//其他消息交给由系统提供的缺省处理函数
 	}
