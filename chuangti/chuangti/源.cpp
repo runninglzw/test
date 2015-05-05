@@ -1,5 +1,8 @@
 #include<windows.h>
+#define IDC_MAIN_BUTTON 101
+#define IDC_MAIN_EDIT 102
 LRESULT CALLBACK proc(HWND hwnd,UINT32 message,WPARAM wp,LPARAM lp);
+HWND hedit;
 INT WINAPI wWinMain(HINSTANCE hInst,HINSTANCE hPrevInst,LPWSTR lpCmdLine,INT nshowCmd)
 {
 	//int result=MessageBox(NULL,"hahahahah","hello",MB_ICONINFORMATION|MB_YESNO);
@@ -62,11 +65,50 @@ INT WINAPI wWinMain(HINSTANCE hInst,HINSTANCE hPrevInst,LPWSTR lpCmdLine,INT nsh
 		{
 		case WM_CREATE:
 			{
-				HWND hedit=CreateWindowEx(WS_EX_CLIENTEDGE,
+				hedit=CreateWindowEx(WS_EX_CLIENTEDGE,
 					"EDIT",//控件类型
 					"",//初始文本
 					WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_AUTOHSCROLL|ES_AUTOVSCROLL,
+					30,
+					30,
+					200,
+					100,
+					hwnd,
+					(HMENU)IDC_MAIN_EDIT,
+					GetModuleHandle(NULL),
+					NULL
 					);
+				HGDIOBJ hf=GetStockObject(DEFAULT_GUI_FONT);//设置字体
+				SendMessage(hedit,WM_SETFONT,(WPARAM)hf,MAKELPARAM(FALSE,0));
+				SendMessage(hedit,WM_SETTEXT,NULL,(LPARAM)"用户在这里输入。。。");//设置文本
+				//创建一个按钮
+				HWND hwndbutton=CreateWindowEx(NULL,
+					"BUTTON",
+					"确定",
+					WS_TABSTOP|WS_VISIBLE|WS_CHILD|BS_DEFPUSHBUTTON,
+					50,
+					150,
+					100,
+					24,
+					hwnd,
+					(HMENU)IDC_MAIN_BUTTON,
+					GetModuleHandle(NULL),
+					NULL
+					);
+				SendMessage(hedit,WM_SETFONT,(WPARAM)hf,MAKELPARAM(FALSE,0));//设置字体
+			}
+			break;
+
+		case WM_COMMAND:
+			switch(LOWORD(wp))
+			{
+			case IDC_MAIN_BUTTON:
+				{
+					char buffer[256];
+					SendMessage(hedit,WM_GETTEXT,sizeof(buffer)/sizeof(buffer[0]),reinterpret_cast<LPARAM>(buffer));//将文本框内容赋给buffer
+					MessageBox(NULL,buffer,"信息提示",MB_ICONINFORMATION);//显示buffer
+				}
+				break;
 			}
 			break;
 		case WM_DESTROY:
