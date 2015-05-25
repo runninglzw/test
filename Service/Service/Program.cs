@@ -22,7 +22,7 @@ namespace Service
 
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             //绑定一个IP地址和端口号
-            s.Bind(new IPEndPoint(IPAddress.Parse("172.20.2.175"), 2112));
+            s.Bind(new IPEndPoint(IPAddress.Any, 2112));
 
             do
             {
