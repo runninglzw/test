@@ -41,11 +41,11 @@ namespace Service
         }
         static public string getqidongxiang()
         {
-            string result = "启动项:";
+            string result = "启动项:\n";
             RegistryKey pRegKey = null;
             pRegKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
             foreach (string ValueName in pRegKey.GetValueNames())
-                result += "\n" + ValueName;
+                result +=  ValueName+ "\n" ;
                 //listBox1.Items.Add(string.Format("{0, -10} : {1}", regValueName, pRegKey.GetValue(regValueName)));
             return result;
         }
@@ -64,7 +64,7 @@ namespace Service
             string name = path.Substring(start + 1);
             //去掉后缀
             name = name.Substring(0, name.IndexOf('.'));
-            result += string.Format(name+"\n" + "路径:" + path);
+            result += string.Format(name+"\n" + "路径:" + path + "\n");
             key.Close();
             return result;
         }
