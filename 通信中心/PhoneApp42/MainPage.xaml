@@ -1,0 +1,40 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PhoneApp41.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel 包含应用程序的名称和页标题-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        </StackPanel>
+
+        <!--ContentPanel - 在此处放置其他内容-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,20,24,-20">
+            <TextBlock  FontSize="50" HorizontalAlignment="Left" Height="109" TextWrapping="Wrap" Text="通讯中心:" VerticalAlignment="Top" Width="241" FontWeight="Bold" Margin="-1,0,0,0"/>
+            <Button Content="打电话" HorizontalAlignment="Left" Margin="105,248,0,0" VerticalAlignment="Top" Width="187" Click="Button_Click_phone"/>
+            <Button Content="发邮件" HorizontalAlignment="Left" Margin="105,320,0,0" VerticalAlignment="Top" Width="187" Click="Button_Click_email"/>
+            <Button Content="发短息" HorizontalAlignment="Left" Margin="105,176,0,0" VerticalAlignment="Top" Width="187" Click="Button_Click_message"/>
+            <Button Content="搜索" HorizontalAlignment="Left" Margin="105,397,0,0" VerticalAlignment="Top" Width="187" Click="Button_Click_search"/>
+            <Button Content="浏览器" HorizontalAlignment="Left" Height="78" Margin="108,98,0,0" VerticalAlignment="Top" Width="184" Click="Button_Click_liulan"/>
+            <Button Content="使用地图" HorizontalAlignment="Left" Height="70" Margin="105,469,0,0" VerticalAlignment="Top" Width="187" RenderTransformOrigin="0.474,0.357" Click="Button_Click_map"/>
+            <Button Content="照相机" HorizontalAlignment="Left" Height="75" Margin="108,544,0,0" VerticalAlignment="Top" Width="184" Click="Button_Click_camra"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
