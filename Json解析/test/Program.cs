@@ -49,12 +49,12 @@ namespace test
 
 
 
-            JsonReader reader = new JsonTextReader(new StringReader(jsonText));  //很少用JsonReader
-            while (reader.Read())
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine(reader.TokenType + "\t\t" + reader.ValueType + "\t\t" + reader.Value);
-            }
+            //JsonReader reader = new JsonTextReader(new StringReader(jsonText));  //很少用JsonReader
+            //while (reader.Read())
+            //{
+            //    Thread.Sleep(1000);
+            //    Console.WriteLine(reader.TokenType + "\t\t" + reader.ValueType + "\t\t" + reader.Value);
+            //}
         }
     }
 }
